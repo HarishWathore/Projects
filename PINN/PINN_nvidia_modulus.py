@@ -24,7 +24,7 @@ from modulus.sym.utils.io import (
     ValidatorPlotter,
     InferencerPlotter,
 )
-
+from modulus.sym import quantity
 import math
 import matplotlib.pyplot as plt
 import numpy as np
@@ -34,11 +34,13 @@ import os
 from modulus.sym.geometry.primitives_2d import Polygon
 from modulus.sym.geometry.parameterization import Parameterization, Parameter
 from modulus.sym.utils.io.vtk import var_to_polyvtk
-
+from modulus.sym.geometry import Bounds
 import modulus.sym
 from modulus.sym.hydra import to_yaml
 from modulus.sym.hydra.utils import compose
 from modulus.sym.hydra.config import ModulusConfig
+from modulus.sym.eq.pdes.basic import NormalDotVec
+from modulus.sym.eq.non_dim import NonDimensionalizer, Scaler
 
 def rotate_point(point, angle_deg):
     # Convert angle from degrees to radians
