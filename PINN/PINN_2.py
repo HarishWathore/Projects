@@ -97,7 +97,7 @@ def run(cfg: ModulusConfig) -> None:
     line = naca_airfoil.naca4(x, m, p, t, c)[:-1]
 
     geo = Polygon(line)
-    geometry = channel - geo
+    airfoil = channel - geo
 
     # make list of nodes to unroll graph on
     ns = NavierStokes(nu=nd.ndim(nu), rho=nd.ndim(rho), dim=2, time=False)
@@ -153,7 +153,7 @@ def run(cfg: ModulusConfig) -> None:
     # no slip
     no_slip = PointwiseBoundaryConstraint(
         nodes=nodes,
-        geometry=airfoil,
+        geometry=geo,
         outvar={"u": nd.ndim(noslip_u), "v": nd.ndim(noslip_v)},
         batch_size=cfg.batch_size.no_slip,
     )
@@ -162,7 +162,7 @@ def run(cfg: ModulusConfig) -> None:
     # interior contraints
     interior = PointwiseInteriorConstraint(
         nodes=nodes,
-        geometry=airfoil_geom,
+        geometry=airfoil,
         outvar={"continuity": 0, "momentum_x": 0, "momentum_y": 0},
         batch_size=cfg.batch_size.interior,
         bounds=Bounds({x: channel_length_nd, y: channel_width_nd}),
