@@ -1,0 +1,41 @@
+To Run Nvidia Modulus on Google Colab :
+
+1. Open Colab and in Runtime Toolbox, Change runtime type to T4. Nvidia Modulus requires a cuda GPU.
+
+2. Import Nvidia_Modulus_Installation.ipynb 
+
+3. Run the notebook as per the instructions inside it.
+
+
+
+
+
+To Run Nvidia Modulus on IITK GPU Server 
+
+1. Install PuTTY( Terminal )
+2. Install WinSCP and Open WinSCP
+3. Enter hostname : gpu03.cc.iitk.ac.in
+4. Username and Password : Enter IITK mail username and Password and you are in/
+5. From Command Toolbox Open PuTTY and enter Password
+6. Now to activate Nvidia Modulus Environment from terminal. 
+   Change dir to nvidia modulus location : cd /usr/local/modulus/bin/
+7. Enter : Source Activate
+8. Change Directory to Where Python Script is :
+
+cd /users/aero/mt(or bt or phd)/$USER/xyz_folder/
+9. Enter : torchrun xyz.py
+
+
+Some Debugging codes for errors in linux GPU server
+
+Error Troubleshooting
+Internet browsers malfunctioning.
+Solution: Check your user quota (default 2 GB for shell account). Run following commands in Linux terminal to check quota status.
+
+		# du -sh		(check quota size)
+		# ls -la		(see all hidden files)
+		# rm -frv .cache/*	(delete a hidden folder content)
+		# find .cache/ -type f  -delete		(another method to delete all files in .cache directory)
+		# find .cache/ -depth -type f -atime +1	(Show all file in .cache directory, those are 1 day old)
+Not able to login to laboratory machines.
+Solution: Check if you types password correctly, then check your quota as mentioned above. Contact Linux help desk in CC room number-209.

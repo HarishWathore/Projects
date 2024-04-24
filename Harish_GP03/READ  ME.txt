@@ -1,0 +1,11 @@
+The code was executed on the iitk GPU server 3.
+To run the code on the GPU server or Google Colab, go to the 'HOW TO RUN' text file.
+
+Folders:
+
+pictures - picture of outputs of the PINN
+
+(\outputs\PINN_4412_v3\constraints)
+
+constraints - Folder containing all the output geometry and domain with all the predicted flow parameters 
+              stored in the form of polydata.
